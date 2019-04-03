@@ -7,11 +7,11 @@
 
 module.exports = {
 
-  gestionActual: function (req, res) {
-    Gestionacademica.findOne(1).exec(function (err, datoGestion) {
-      if (err) {return res.serverError(err)};
-      res.send(datoGestion)
-    })
-  }
+    gestionActual: function(req, res) {
+        Gestionacademica.findOne(2).exec(function(err, datoGestion) {
+            if (err) { return res.serverError(err) };
+            res.send(datoGestion)
+        })
+    }
 
 };

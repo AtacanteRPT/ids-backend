@@ -72,8 +72,10 @@ module.exports = {
             idGrado: req.query.idGrado,
             idGrupo: req.query.idGrupo
         };
-
+        //req.query.idGestionAcademica
+        var gestionActual = 2;
         console.log('TODO QUERY', req.query)
+        console.log('OTRO QUERY', req.body)
         var asistenciasCurso = []
 
         Curso.findOne(curso).exec(function(err, datoCurso) {
@@ -83,7 +85,7 @@ module.exports = {
                 Inscribe.find({ idCurso: datoCurso.id }).populate('idAlumno').exec(function(err, inscripciones) {
 
                     var alumnosCurso = [];
-                    
+
                     async.forEach(inscripciones, function(inscripcion, cb) {
 
                         // sails.log("inscribe ", inscripcion)
@@ -92,6 +94,7 @@ module.exports = {
                         if (alumno != undefined) {
                             Asistencia.find({
                                 idPersona: alumno.idPersona,
+                                //   idGestionAcademica: gestionActual,
                                 fecha: { '>': req.query.ini, '<': req.query.fin }
 
                             }).populate('idPersona').populate('idGestionAcademica').exec(function(err, datosAsistencia) {
