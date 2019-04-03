@@ -7,7 +7,7 @@
 
 module.exports = {
 
-    adicionar_asignatura: function (req, res) {
+    adicionar_asignatura: function(req, res) {
 
         var idProfesor = req.param('idProfesor')
         var idAsignatura = req.param('idAsignatura')
@@ -23,14 +23,14 @@ module.exports = {
         })
 
     },
-    quitar_asignatura: function (req, res) {
+    quitar_asignatura: function(req, res) {
         var idProfesor = req.param('idProfesor')
         var idAsignatura = req.param('idAsignatura')
 
         Profesor.findOne({
             idPersona: idProfesor
 
-        }).exec(function (err, datoProfesor) {
+        }).exec(function(err, datoProfesor) {
             Dicta_clases.destroy({ idProfesor: datoProfesor.id, idAsignatura: idAsignatura }).exec((err, respuesta) => {
                 if (err) {
                     return res.negotiate(err);
@@ -43,31 +43,31 @@ module.exports = {
     }
 
     ,
-    dicta_asignatura: function (req, res) {
+    dicta_asignatura: function(req, res) {
         var asignaturas = [];
-        console.log(req.param('id'))
+        //console.log(req.param('id'))
         Profesor.findOne({
             idPersona: req.param('id')
 
-        }).exec(function (err, datoProfesor) {
+        }).exec(function(err, datoProfesor) {
 
             if (err) { return res.serverError(err); }
 
             Dicta_clases.find({
                 where: { idProfesor: datoProfesor.id }
 
-            }).exec(function (err, datoDictaClases) {
+            }).exec(function(err, datoDictaClases) {
                 if (err) { return res.serverError(err); }
 
-                async.forEach(datoDictaClases, function (auxClases, cb) {
-                    Asignatura.findOne({ id: auxClases.idAsignatura }).exec(function (err, datoAsignatura) {
+                async.forEach(datoDictaClases, function(auxClases, cb) {
+                    Asignatura.findOne({ id: auxClases.idAsignatura }).exec(function(err, datoAsignatura) {
                         if (err) { return res.serverError(err); }
 
                         asignaturas.push(datoAsignatura);
                         cb();
                     });
 
-                }, function (error) {
+                }, function(error) {
 
                     if (error) return res.negotiate(error);
 

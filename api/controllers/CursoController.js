@@ -138,7 +138,7 @@ module.exports = {
 
                                     auxTurno.grados[indexG].grupos = [];
                                     auxTurno.grados[indexG].grupos = auxGrupos;
-                                    // console.log('grupos++ ', todo[indexT].grados[indexG].grupos)
+                                    // //console.log('grupos++ ', todo[indexT].grados[indexG].grupos)
 
                                     // sails.log('TODO : ',todo[indexT].grados[indexG])
                                     // todo[indexT].grados[indexG].grupos = [];
@@ -178,7 +178,7 @@ module.exports = {
 
                             }, this);
 
-                            console.log('llego aqui')
+                            //console.log('llego aqui')
                             res.send(todo)
                         })
                     })
@@ -283,7 +283,7 @@ module.exports = {
 
                             sails.log('****************')
 
-                            console.log('llego aqui')
+                            //console.log('llego aqui')
                             res.send(turno)
                         })
                     })
@@ -457,7 +457,7 @@ module.exports = {
             async.each(datoInscripciones, function(inscripcion, cb) {
 
                 Inscribe.create({ idGestionAcademica: 2, idCurso: idCurso2019, idAlumno: inscripcion.idAlumno }).fetch().exec(function(err, datoInscripcion) {
-                    console.log("CURSO ACTUALIZADO", datoInscripcion)
+                    //console.log("CURSO ACTUALIZADO", datoInscripcion)
                     cb()
                 });
 

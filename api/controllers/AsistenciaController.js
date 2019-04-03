@@ -26,7 +26,7 @@ require('../../configuracion')
 // var io = socketIo.listen(server);
 
 // server.listen(1338);
-// console.log('Server Sockets: el puerto 1338');
+// //console.log('Server Sockets: el puerto 1338');
 
 // //  var socketIo = require('socket.io');
 
@@ -40,7 +40,7 @@ require('../../configuracion')
 // });
 
 // port_1.on('data', function(data) {
-//     console.log("mensjae ", data.toString())
+//     //console.log("mensjae ", data.toString())
 
 // });
 
@@ -58,7 +58,7 @@ module.exports = {
     mostrar: function(req, res) {
         var hoy = new Date();
         var baseidentificacion = req.param('baseidentificacion')
-        console.log("CLIENTE : ", req.param("baseidentificacion"))
+            //console.log("CLIENTE : ", req.param("baseidentificacion"))
 
         var fecha = hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate()
         var fecha2 = moment().format("YYYY-MM-DD");
@@ -126,7 +126,7 @@ module.exports = {
 
                     var resultado = {}
 
-                    console.log('tamaño console length', consulta.length)
+                    //console.log('tamaño //console length', consulta.length)
                     if (consulta.length > 0) {
                         resultado = consulta[consulta.length - 1]
                     } else {
@@ -144,16 +144,16 @@ module.exports = {
                         idPersona: resultado.idPersona,
                         fecha: fecha
                     }).exec((err, datoAsistencia) => {
-                        console.log('fechaAsistencia', datoAsistencia)
+                        //console.log('fechaAsistencia', datoAsistencia)
 
                         if (datoAsistencia == null) {
-                            console.log('paso 2 creando nuevo')
+                            //console.log('paso 2 creando nuevo')
                             Asistencia.create({
                                 fecha: fecha,
                                 estado: 'asistió',
                                 hora_llegada: horaActual,
                                 hora_salida: horaActual,
-                                idGestionAcademica: 1,
+                                idGestionAcademica: 2,
                                 idPersona: resultado.idPersona
                             }).fetch().exec((err, datoAsistencia) => {
                                 if (err) {
@@ -183,12 +183,12 @@ module.exports = {
                                     // handle response
                                     sails.log("se enviò una notificaciòn")
                                 });
-                                console.log("nuevo", auxAlumno)
+                                //console.log("nuevo", auxAlumno)
                                 return res.send(auxAlumno);
 
                             });
                         } else {
-                            console.log('paso 4 actualizando salida')
+                            //console.log('paso 4 actualizando salida')
                             sails.log("fecha :", fecha)
                             sails.log("resultado idPersona", resultado.idPersona)
                             Asistencia.update(datoAsistencia.id).set({
@@ -199,7 +199,7 @@ module.exports = {
                                         return res.serverError(err);
                                     }
 
-                                    console.log('actualizado', datoAsistencia2)
+                                    //console.log('actualizado', datoAsistencia2)
 
                                     auxAlumno = {
                                         identificacion: actualIdentificacion,
@@ -277,16 +277,16 @@ module.exports = {
                     idPersona: datoPersona.id,
                     fecha: fecha
                 }).exec((err, datoAsistencia) => {
-                    console.log('fechaAsistencia', datoAsistencia)
+                    //console.log('fechaAsistencia', datoAsistencia)
 
                     if (datoAsistencia == null) {
-                        console.log('paso 2 creando nuevo')
+                        //console.log('paso 2 creando nuevo')
                         Asistencia.create({
                             fecha: fecha,
                             estado: 'asistió',
                             hora_llegada: horaActual,
                             hora_salida: horaActual,
-                            idGestionAcademica: 1,
+                            idGestionAcademica: 2,
                             idPersona: datoPersona.id
                         }).fetch().exec((err, datoAsistencia) => {
                             if (err) {
@@ -316,12 +316,12 @@ module.exports = {
                             //   // handle response
                             //   sails.log("se enviò una notificaciòn")
                             // });
-                            console.log("nuevo", auxAlumno)
+                            //console.log("nuevo", auxAlumno)
                             return res.send(auxAlumno);
 
                         });
                     } else {
-                        console.log('paso 4 actualizando salida')
+                        //console.log('paso 4 actualizando salida')
                         sails.log("fecha :", fecha)
                             // sails.log("resultado idPersona", resultado.idPersona)
                         Asistencia.update(datoAsistencia.id).set({
@@ -332,7 +332,7 @@ module.exports = {
                                     return res.serverError(err);
                                 }
 
-                                console.log('actualizado', datoAsistencia2)
+                                //console.log('actualizado', datoAsistencia2)
 
                                 auxAlumno = {
                                     identificacion: actualIdentificacion,
@@ -369,9 +369,9 @@ module.exports = {
         })
 
         // } else {
-        //     console.log('actualIdentifiacion', actualIdentificacion);
-        //     console.log('baseIdentificacion', baseidentificacion);
-        //     console.log('repedito')
+        //     //console.log('actualIdentifiacion', actualIdentificacion);
+        //     //console.log('baseIdentificacion', baseidentificacion);
+        //     //console.log('repedito')
         //     res.send(auxAlumno)
         // }
 
@@ -381,8 +381,8 @@ module.exports = {
         minHoraSalida = parseInt((req.body.minHoraSalida).substring(0, 2))
         minsSalida = parseInt((req.body.minHoraSalida).substring(3, 5))
         actualIdentificacion = '0'
-        console.log('minHoraSalida', minHoraSalida)
-        console.log('minsSalida', minsSalida)
+            //console.log('minHoraSalida', minHoraSalida)
+            //console.log('minsSalida', minsSalida)
         res.json('ajuste horario cambiado')
 
     },
@@ -540,7 +540,7 @@ module.exports = {
     historial_administrativo: function(req, res) {
 
         var id = req.user.id;
-        console.log("historial administrativo")
+        //console.log("historial administrativo")
         Asistencia.find({
             where: {
                 idPersona: id

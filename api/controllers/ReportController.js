@@ -11,7 +11,7 @@ module.exports = {
 
         var fechaA = new Date('2/27/2018');
         var hoy = new Date();
-        console.log('fecha', fechaA)
+        //console.log('fecha', fechaA)
         Asistencia.find().populate('idPersona').exec((err, datoAsistencias) => {
             sails.log('datoAsistencias', datoAsistencias[0].fecha)
             datoAsistencias[0].fecha = fechaA.getDate() + ' de ' + mes[fechaA.getMonth()] + ' de ' + fechaA.getFullYear()
@@ -30,9 +30,9 @@ module.exports = {
             ,
             function(err, pdf) {
                 var output = fs.createWriteStream(path.join(__dirname, '../.././assets/reportes/output.pdf'))
-                console.log(pdf.logs);
+                    //console.log(pdf.logs);
 
-                console.log(pdf.numberOfPages);
+                //console.log(pdf.numberOfPages);
                 // since pdf.stream is a node.js stream you can use it
                 // to save the pdf to a file (like in this example) or to
                 // respond an http request.
@@ -51,11 +51,11 @@ module.exports = {
             ,
             function(err, pdf) {
                 var output = fs.createWriteStream(path.join(__dirname, '../.././assets/reportes/output.pdf'))
-                console.log(pdf.logs);
-                console.log(pdf.numberOfPages);
-                // since pdf.stream is a node.js stream you can use it
-                // to save the pdf to a file (like in this example) or to
-                // respond an http request.
+                    //console.log(pdf.logs);
+                    //console.log(pdf.numberOfPages);
+                    // since pdf.stream is a node.js stream you can use it
+                    // to save the pdf to a file (like in this example) or to
+                    // respond an http request.
                 pdf.stream.pipe(output);
             });
         res.send('NADA')
@@ -74,8 +74,8 @@ module.exports = {
         };
         //req.query.idGestionAcademica
         var gestionActual = 2;
-        console.log('TODO QUERY', req.query)
-        console.log('OTRO QUERY', req.body)
+        //console.log('TODO QUERY', req.query)
+        //console.log('OTRO QUERY', req.body)
         var asistenciasCurso = []
 
         Curso.findOne(curso).exec(function(err, datoCurso) {
@@ -144,11 +144,11 @@ module.exports = {
             ,
             function(err, pdf) {
                 var output = fs.createWriteStream(path.join(__dirname, '../.././assets/reportes/output.pdf'))
-                console.log(pdf.logs);
-                console.log(pdf.numberOfPages);
-                // since pdf.stream is a node.js stream you can use it
-                // to save the pdf to a file (like in this example) or to
-                // respond an http request.
+                    //console.log(pdf.logs);
+                    //console.log(pdf.numberOfPages);
+                    // since pdf.stream is a node.js stream you can use it
+                    // to save the pdf to a file (like in this example) or to
+                    // respond an http request.
                 pdf.stream.pipe(output);
             });
         res.send('NADA')

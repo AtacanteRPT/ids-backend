@@ -13,7 +13,7 @@ module.exports = {
 
     alumno_tutor: function(req, res) {
         var tutores = [];
-        console.log(req.param('id'))
+        //console.log(req.param('id'))
         Alumno.findOne({
             idPersona: req.param('id')
 
@@ -23,7 +23,7 @@ module.exports = {
                 return res.serverError(err);
             }
 
-            console.log("datoAlumno:", datoAlumno);
+            //console.log("datoAlumno:", datoAlumno);
             Tutor_alumno.find({
                 where: {
                     idAlumno: datoAlumno.id
@@ -42,7 +42,7 @@ module.exports = {
                             return res.serverError(err);
                         }
 
-                        console.log(datoTutor)
+                        //console.log(datoTutor)
                         tutores.push(datoTutor);
                         sails.log('1:', tutores.length)
                         cb();
@@ -94,8 +94,8 @@ module.exports = {
                             return res.serverError(err);
                         }
 
-                        console.log('******************************')
-                            // return res.redirect('/alumno/tutores/' + req.param('idAlumno'));
+                        //console.log('******************************')
+                        // return res.redirect('/alumno/tutores/' + req.param('idAlumno'));
                         res.send(creado)
 
                     });
@@ -139,8 +139,8 @@ module.exports = {
                             return res.serverError(err);
                         }
 
-                        console.log('******************************')
-                            // return res.redirect('/alumno/tutores/' + req.param('idAlumno'));
+                        //console.log('******************************')
+                        // return res.redirect('/alumno/tutores/' + req.param('idAlumno'));
                         res.send(creado)
 
                     });
@@ -163,7 +163,7 @@ module.exports = {
             idGrupo: req.query.idGrupo
         };
         var gestionActual = 2;
-        console.log('TODO QUERY', req.query)
+        //console.log('TODO QUERY', req.query)
         var asistenciasCurso = []
 
         Curso.findOne(curso).exec(function(err, datoCurso) {

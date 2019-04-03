@@ -8,14 +8,14 @@
 module.exports = {
 
     inscribir: function(req, res) {
-        // console.log("entrando por lo menos ala consulta")
+        // //console.log("entrando por lo menos ala consulta")
         var id = req.param('id')
         var idCurso = req.param('idCurso')
         var idGestionAcademica = req.param('idGestionAcademica')
         Alumno.findOne().where({ idPersona: id }).exec((err, datoPersona) => {
             if (err) { return res.serverError(err); }
 
-            // console.log("entrando en la consulta")
+            // //console.log("entrando en la consulta")
             if (datoPersona != undefined) {
                 Inscribe.create({ idAlumno: datoPersona.id, idCurso: idCurso, idGestionAcademica: idGestionAcademica }).fetch().exec((err, datoInscribe) => {
                     res.send(datoInscribe)
