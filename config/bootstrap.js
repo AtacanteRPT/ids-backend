@@ -16,9 +16,9 @@ module.exports.bootstrap = async function(done) {
     //   // etc.
     // ]);
     // ```
-    //sails.config.port=80
+    sails.config.port=81
     // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
-    sails.config.port=47000;
+    //sails.config.port=47000;
     return done();
 
 };
