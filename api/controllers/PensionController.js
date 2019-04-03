@@ -54,11 +54,11 @@ module.exports = {
                         });
                         // //console.log(datoAlumno)
                         // alumnos.push(datoAlumno);
-                        // sails.log('1:', alumnos.length)
+                        // //sails.log('1:', alumnos.length)
                     });
 
                 }, function(error) {
-                    sails.log('2:', alumnos.length)
+                    //sails.log('2:', alumnos.length)
                     if (error) return res.negotiate(error);
 
                     return res.send(tutor_alumnos)

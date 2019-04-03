@@ -51,7 +51,7 @@ function recortarNombre(estudiante1) {
         }
         auxPersona.materno = auxNombre;
     }
-    sails.log("auxpersona: ", auxPersona)
+    //sails.log("auxpersona: ", auxPersona)
     return auxPersona;
 }
 
@@ -80,7 +80,7 @@ function recortarNombre2(estudiante1) {
         }
         auxPersona.nombre = auxNombre;
     }
-    sails.log("auxpersona: ", auxPersona)
+    //sails.log("auxpersona: ", auxPersona)
     return auxPersona;
 }
 
@@ -93,7 +93,7 @@ function recortarNombre2(estudiante1) {
 //             rest.postJson('http://localhost:1337/alumno/adicionar_tutor', { idTutor: tutor.id, idAlumno: datoAlumno.id }).on('complete', function(data2, response2) {
 //                 // handle response
 //                 //console.log('tutor adicionado', data2)
-//                 sails.log("---------------ADICIONADO TUTOR con exito--------------------")
+//                 //sails.log("---------------ADICIONADO TUTOR con exito--------------------")
 //             });
 //         }
 //     });
@@ -107,7 +107,7 @@ function adicionar_tutor_alumno(tutor, alumno) {
     }).on('complete', function(data2, response2) {
         // handle response
         //console.log('tutor adicionado', data2)
-        sails.log("---------------ADICIONADO TUTOR con exito--------------------")
+        //sails.log("---------------ADICIONADO TUTOR con exito--------------------")
     });
 
 
@@ -122,7 +122,7 @@ function adicionar_tutor_alumno(tutor, alumno) {
 //         rest.postJson('http://localhost:1337/alumno/adicionar_tutor', { idTutor: tutor.id, idAlumno: alumno.id }).on('complete', function(data2, response2) {
 //             // handle response
 //             //console.log('tutor adicionado', data2)
-//             sails.log("---------------ADICIONADO TUTOR con exito--------------------")
+//             //sails.log("---------------ADICIONADO TUTOR con exito--------------------")
 //         });
 //     }
 
@@ -143,7 +143,7 @@ module.exports = {
             if (err) {
                 return res.serverError(err)
             };
-            sails.log("LENGTH :", datoPersonas.length)
+            //sails.log("LENGTH :", datoPersonas.length)
             datoPersonas.forEach(element => {
 
 
@@ -206,7 +206,7 @@ module.exports = {
                 Persona.update(tutor, {
                     identificacion: auxIdentificacion
                 }).exec(function(err, datoPersona) {
-                    sails.log(datoPersona)
+                    //sails.log(datoPersona)
                     nro++;
                     callback(null);
                 });
@@ -219,7 +219,7 @@ module.exports = {
 
                 //         Persona.findOne({ identificacion: persona.codigoFoto }).exec(function(err, datoALumno) {
 
-                //             sails.log("personaEncontrada:", datoALumno)
+                //             //sails.log("personaEncontrada:", datoALumno)
                 //             rest.postJson('http://localhost:1337/alumno/adicionar_tutor', { idTutor: data.id, idAlumno: datoALumno.id }).on('complete', function(data2, response2) {
                 //                 // handle response
                 //                 //console.log('tutor adicionado', data2)
@@ -240,7 +240,7 @@ module.exports = {
 
         }, function(error) {
 
-            sails.log("-------------------FINAL LISTA -----------------------")
+            //sails.log("-------------------FINAL LISTA -----------------------")
 
 
         });
@@ -294,7 +294,7 @@ module.exports = {
                             identificacion: persona.codigoFoto
                         }).exec(function(err, datoALumno) {
 
-                            sails.log("personaEncontrada:", datoALumno)
+                            //sails.log("personaEncontrada:", datoALumno)
                             rest.postJson('http://localhost:1337/alumno/adicionar_tutor', {
                                 idTutor: data.id,
                                 idAlumno: datoALumno.id
@@ -318,7 +318,7 @@ module.exports = {
 
         }, function(error) {
 
-            sails.log("-------------------FINAL LISTA -----------------------")
+            //sails.log("-------------------FINAL LISTA -----------------------")
 
 
         });
@@ -401,9 +401,9 @@ module.exports = {
 
         async.eachSeries(files, function(file, callback) {
 
-            sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-            sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-            sails.log(file)
+            //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            //sails.log(file)
             var nuevasPersonas = [];
             var dato = fs.readFileSync(path.join(__dirname, file), {
                 encoding: 'utf8'
@@ -439,7 +439,7 @@ module.exports = {
                         }
                         // Persona.findOne({ identificacion: persona.codigoFoto }).exec(function (err, datoALumno) {
 
-                        //     sails.log("personaEncontrada:", datoALumno)
+                        //     //sails.log("personaEncontrada:", datoALumno)
                         //     rest.postJson('http://localhost:1337/alumno/adicionar_tutor', { idTutor: data.id, idAlumno: datoALumno.id }).on('complete', function (data2, response2) {
                         //         // handle response
                         //         //console.log('tutor adicionado', data2)
@@ -457,7 +457,7 @@ module.exports = {
                 // }, this);
             }, function(error) {
 
-                sails.log("-------------------FINAL LISTA -----------------------")
+                //sails.log("-------------------FINAL LISTA -----------------------")
                 callback(null);
                 // return res.send("tutores")
             });
@@ -491,10 +491,10 @@ module.exports = {
 
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                sails.log(file)
-                sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                //sails.log(file)
+                //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                 var nuevasPersonas = [];
                 var dato = fs.readFileSync(file.fd, {
                     encoding: 'utf8'
@@ -512,7 +512,7 @@ module.exports = {
                     if (persona.Estudiante.length > 0) {
 
 
-                        // sails.log("PERRSONA", persona);
+                        // //sails.log("PERRSONA", persona);
                         var nombreCompleto = persona.Estudiante.split(" ");
 
                         persona.paterno = nombreCompleto[0]
@@ -535,7 +535,7 @@ module.exports = {
                         persona.codigoFoto = persona.Código
 
                         persona.rol = "alumno"
-                        sails.log("Persona desde el CSV", persona)
+                            //sails.log("Persona desde el CSV", persona)
                             // identificacion = persona.paterno.charAt(0) + persona.materno.charAt(0) + persona.nombre.charAt(0) + persona.codigoFoto
                         rest.postJson('http://localhost:1337/api/persona', persona).on('complete', function(data, response) {
                             // handle response
@@ -555,7 +555,7 @@ module.exports = {
                             }
                             // Persona.findOne({ identificacion: persona.codigoFoto }).exec(function (err, datoALumno) {
 
-                            //     sails.log("personaEncontrada:", datoALumno)
+                            //     //sails.log("personaEncontrada:", datoALumno)
                             //     rest.postJson('http://localhost:1337/alumno/adicionar_tutor', { idTutor: data.id, idAlumno: datoALumno.id }).on('complete', function (data2, response2) {
                             //         // handle response
                             //         //console.log('tutor adicionado', data2)
@@ -573,7 +573,7 @@ module.exports = {
                     // }, this);
                 }, function(error) {
 
-                    sails.log("-------------------FINAL LISTA -----------------------")
+                    //sails.log("-------------------FINAL LISTA -----------------------")
                     callback(null);
                     // return res.send("tutores")
                 });
@@ -619,10 +619,10 @@ module.exports = {
             var cursoId = 1;
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                sails.log(file)
-                sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                //sails.log(file)
+                //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                 var nuevasPersonas = [];
                 var dato = fs.readFileSync(file.fd, {
                     encoding: 'utf8'
@@ -645,7 +645,7 @@ module.exports = {
                         // persona.codigoFoto = persona.Código
 
                         persona.rol = "alumno"
-                        sails.log("Persona desde el CSV", persona)
+                            //sails.log("Persona desde el CSV", persona)
                         cursoId = persona.idCurso;
                         var identificacion = persona.paterno.charAt(0) + persona.materno.charAt(0) + persona.nombre.charAt(0) + persona.codigoFoto
                         rest.postJson('http://moswara.com:48000/api/persona', persona).on('complete', function(data, response) {
@@ -731,7 +731,7 @@ module.exports = {
                             cb();
                             // Persona.update(data.id, { identificacion: data.id + "-" + identificacion }).exec(function(err, datoALumno) {
 
-                            //     sails.log("personaEncontrada:", datoALumno)
+                            //     //sails.log("personaEncontrada:", datoALumno)
                             //     rest.postJson('http://localhost:1337/alumno/adicionar_tutor', { idTutor: data.id, idAlumno: datoALumno.id }).on('complete', function(data2, response2) {
                             //         // handle response
                             //         //console.log('tutor adicionado', data2)
@@ -749,7 +749,7 @@ module.exports = {
                     // }, this);
                 }, function(error) {
 
-                    sails.log("-------------------FINAL LISTA -----------------------")
+                    //sails.log("-------------------FINAL LISTA -----------------------")
                     callback(null);
                     // return res.send("tutores")
                 });
@@ -793,10 +793,10 @@ module.exports = {
             var cursoId = 1;
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                sails.log(file)
-                sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                //sails.log(file)
+                //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                 var nuevasPersonas = [];
                 var dato = fs.readFileSync(file.fd, {
                     encoding: 'utf8'
@@ -821,7 +821,7 @@ module.exports = {
                         // persona.codigoFoto = persona.Código
 
                         persona.rol = "alumno"
-                        sails.log("Persona desde el CSV", persona)
+                            //sails.log("Persona desde el CSV", persona)
                         cursoId = persona.idCurso;
                         var identificacion = persona.paterno.charAt(0) + persona.materno.charAt(0) + persona.nombre.charAt(0)
                         rest.postJson('http://www.moswara.com:48000/api/persona', persona).on('complete', function(data, response) {
@@ -850,7 +850,7 @@ module.exports = {
                                 var code = qr.image(codigoQr, {
                                     type: 'png'
                                 });
-                                sails.log("personaEncontrada:", datoAlumno)
+                                //sails.log("personaEncontrada:", datoAlumno)
 
                                 var dir = './assets/codigos/domingo_savio/' + "turno_mañana_nuevos" + "/"
 
@@ -875,7 +875,7 @@ module.exports = {
                     // }, this);
                 }, function(error) {
 
-                    sails.log("-------------------FINAL LISTA -----------------------")
+                    //sails.log("-------------------FINAL LISTA -----------------------")
                     callback(null);
                     // return res.send("tutores")
                 });
@@ -909,7 +909,7 @@ module.exports = {
             }
 
             datoAlumnos.forEach(datoAlumno => {
-                sails.log("personaEncontrada:", datoAlumno)
+                //sails.log("personaEncontrada:", datoAlumno)
 
                 var codigoQr = datoAlumno.identificacion + '$2018$' + 'Colegio Domingo Savio '
                 var code = qr.image(codigoQr, {
@@ -946,7 +946,7 @@ module.exports = {
             }
 
             rest.postJson('http://localhost:1337/api/persona', persona).on('complete', function(data, response) {
-                sails.log("CREANDO:", data)
+                //sails.log("CREANDO:", data)
                 cb();
             });
 
@@ -1113,8 +1113,8 @@ module.exports = {
                 }, function(error) {
 
                     if (error) return res.negotiate(error);
-                    sails.log("tamaño", inscripciones.length)
-                    sails.log("es curso ", inscripciones[0].idCurso)
+                    //sails.log("tamaño", inscripciones.length)
+                    //sails.log("es curso ", inscripciones[0].idCurso)
                     return res.send(alumnosCurso)
                 });
 
@@ -1168,13 +1168,13 @@ module.exports = {
                 uploadedFiles.forEach(function(file, i) {
 
                     var nombreFoto = file.filename.substring(4, 8);
-                    sails.log('NOMBRE FOTO: ', nombreFoto)
-                    sails.log('codigo FOTO: ', persona.codigoFoto)
+                    //sails.log('NOMBRE FOTO: ', nombreFoto)
+                    //sails.log('codigo FOTO: ', persona.codigoFoto)
                     if (nombreFoto == persona.codigoFoto) {
-                        sails.log('++++++++++++++++++++++++++++++++++')
-                        sails.log('IGUALES')
+                        //sails.log('++++++++++++++++++++++++++++++++++')
+                        //sails.log('IGUALES')
 
-                        sails.log('Persona - Identificacion', "*" + persona.identificacion + "*")
+                        //sails.log('Persona - Identificacion', "*" + persona.identificacion + "*")
                         var url = direccionBase + "/avatars//" + (uploadedFiles[i].fd).substring(47);
                         Persona.findOne({
                             identificacion: persona.identificacion
@@ -1257,17 +1257,17 @@ module.exports = {
                         } else {
                             auxCodigoFoto = persona.identificacion;
                         }
-                        sails.log('NOMBRE FOTO: ', nombreFoto)
-                        sails.log('codigo FOTO: ', auxCodigoFoto)
+                        //sails.log('NOMBRE FOTO: ', nombreFoto)
+                        //sails.log('codigo FOTO: ', auxCodigoFoto)
 
 
                         if (nombreFoto == auxCodigoFoto) {
-                            sails.log('++++++++++++++++++++++++++++++++++')
-                            sails.log('IGUALES')
+                            //sails.log('++++++++++++++++++++++++++++++++++')
+                            //sails.log('IGUALES')
 
-                            sails.log('Persona - Identificacion', "*" + persona.identificacion + "*")
+                            //sails.log('Persona - Identificacion', "*" + persona.identificacion + "*")
                             var nombreFoto = (uploadedFiles[i].fd).split("\\");
-                            sails.log("fotos:", nombreFoto);
+                            //sails.log("fotos:", nombreFoto);
                             var url = "avatars//" + nombreFoto[nombreFoto.length - 1]
 
 
@@ -1321,10 +1321,10 @@ module.exports = {
 
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                    sails.log(file)
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log(file)
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     var nuevasPersonas = [];
                     var dato = fs.readFileSync(file.fd, {
                         encoding: 'utf8'
@@ -1355,12 +1355,12 @@ module.exports = {
                                 auxTutor.rol = "tutor"
                                 auxTutor.nro = persona["Nº"]
 
-                                sails.log("auxpersona - 2: ", auxTutor)
+                                //sails.log("auxpersona - 2: ", auxTutor)
 
                                 rest.postJson('http://localhost:1337/api/persona', auxTutor).on('complete', function(data1, response) {
                                     // handle response
 
-                                    sails.log("/////////////////////////////////////")
+                                    //sails.log("/////////////////////////////////////")
                                     if (responsable2.length > 0) {
                                         auxTutor = recortarNombre(responsable2)
                                         auxTutor.rol = "tutor"
@@ -1475,7 +1475,7 @@ module.exports = {
                         },
                         function(error) {
 
-                            sails.log("-------------------FINAL LISTA -----------------------")
+                            //sails.log("-------------------FINAL LISTA -----------------------")
                             callback(null);
                             // return res.send("tutores")
                         });
@@ -1536,10 +1536,10 @@ module.exports = {
 
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                    sails.log(file)
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log(file)
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     var nuevasPersonas = [];
                     var dato = fs.readFileSync(file.fd, {
                         encoding: 'utf8'
@@ -1582,7 +1582,7 @@ module.exports = {
                                             Persona.update(datoPersona.id, {
                                                 codigoFoto: persona.Código
                                             }).exec(function(err, actualizado) {
-                                                sails.log("ACTUALIZADO", datoPersona)
+                                                //sails.log("ACTUALIZADO", datoPersona)
 
                                             })
                                         }
@@ -1601,7 +1601,7 @@ module.exports = {
                         },
                         function(error) {
 
-                            sails.log("-------------------FINAL LISTA -----------------------")
+                            //sails.log("-------------------FINAL LISTA -----------------------")
                             callback(null);
                             // return res.send("tutores")
                         });
@@ -1642,10 +1642,10 @@ module.exports = {
 
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                    sails.log(file)
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log(file)
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     var nuevasPersonas = [];
                     var dato = fs.readFileSync(file.fd, {
                         encoding: 'utf8'
@@ -1681,10 +1681,10 @@ module.exports = {
                         b = 1,
                         c = 1,
                         d = 1;
-                    sails.log("nuevaspersonas.length :", nuevasPersonas.length)
+                    //sails.log("nuevaspersonas.length :", nuevasPersonas.length)
                     async.eachSeries(nuevasPersonas, function(persona, cb) {
 
-                            sails.log("PERSONA DEDE CSV : ", persona)
+                            //sails.log("PERSONA DEDE CSV : ", persona)
                             var estudiante = {}
                             estudiante.nombre = persona.nombre
                             estudiante.paterno = persona.paterno
@@ -1694,7 +1694,7 @@ module.exports = {
                             Persona.findOne(estudiante).exec(function(err, datoEstudiante) {
                                 // var datoEstudiante = auxDatoEstudiante[0]
                                 if (datoEstudiante != undefined) {
-                                    sails.log("datoEstudiante", datoEstudiante)
+                                    //sails.log("datoEstudiante", datoEstudiante)
                                     async.series([
                                         function(callb1) {
                                             if (persona.ci_tutor1.length > 0) {
@@ -1850,7 +1850,7 @@ module.exports = {
                                         }
                                     ], function(err, results) {
                                         // optional callback
-                                        sails.log(" LISTA TUTORES ")
+                                        //sails.log(" LISTA TUTORES ")
                                         cb();
                                     });
 
@@ -1913,14 +1913,14 @@ module.exports = {
 
 
 
-                            sails.log("-------------------FINAL LISTA -----------------------")
+                            //sails.log("-------------------FINAL LISTA -----------------------")
                             callback(null);
                             // return res.send("tutores")
                         });
 
                 },
                 function(error) {
-                    sails.log("-------------------FINAL TODO -----------------------")
+                    //sails.log("-------------------FINAL TODO -----------------------")
 
                     // res.send("fin")
                 });
@@ -1956,10 +1956,10 @@ module.exports = {
 
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                    sails.log(file)
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log(file)
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     var nuevasPersonas = [];
                     var dato = fs.readFileSync(file.fd, {
                         encoding: 'utf8'
@@ -2046,9 +2046,9 @@ module.exports = {
                                                 if (error) return res.negotiate(error);
 
 
-                                                sails.log("TAMAÑO alumnos", alumnos.length);
+                                                //sails.log("TAMAÑO alumnos", alumnos.length);
 
-                                                sails.log("alumnos", alumnos);
+                                                //sails.log("alumnos", alumnos);
                                                 alumnos.forEach(function(element, i) {
 
                                                     // auxLista["estudiante" + (i + 1)] = element.nombre + " " + element.paterno + " " + element.materno
@@ -2059,7 +2059,7 @@ module.exports = {
                                                 auxLista.numeroQr = a;
                                                 a++;
 
-                                                sails.log("AUXLISTA.numeroQR", auxLista.numeroQr);
+                                                //sails.log("AUXLISTA.numeroQR", auxLista.numeroQr);
                                                 listaPrincipal.push(auxLista);
 
 
@@ -2105,7 +2105,7 @@ module.exports = {
                                     }
                                 });
                             });
-                            sails.log("-------------------FINAL LISTA -----------------------")
+                            //sails.log("-------------------FINAL LISTA -----------------------")
                             callback(null);
                             // return res.send("tutores")
                         });
@@ -2114,7 +2114,7 @@ module.exports = {
                 function(error) {
                     // res.send("fin")
 
-                    sails.log("-------------------FINAL DE TODO -----------------------")
+                    //sails.log("-------------------FINAL DE TODO -----------------------")
                 });
 
             res.send("OTRA ALTERNATIVA")
@@ -2145,12 +2145,12 @@ module.exports = {
 
             uploadedFiles.forEach(function(file, i) {
                 var nombreFoto = parseInt(file.filename.substring(4, 8)) + "";
-                sails.log("nombre foto", nombreFoto)
-                    // var nombreFoto = file.filename.substring(4, 8) + "";
+                //sails.log("nombre foto", nombreFoto)
+                // var nombreFoto = file.filename.substring(4, 8) + "";
 
-                // sails.log('Persona - Identificacion', "*" + persona.identificacion + "*")
+                // //sails.log('Persona - Identificacion', "*" + persona.identificacion + "*")
                 var urlFoto = (uploadedFiles[i].fd).split(path.sep);
-                sails.log("fotos:", urlFoto);
+                //sails.log("fotos:", urlFoto);
                 var url = "avatars/" + urlFoto[urlFoto.length - 1]
 
 
@@ -2181,8 +2181,8 @@ module.exports = {
                 // } else {
                 //     auxCodigoFoto = persona.identificacion;
                 // }
-                // sails.log('NOMBRE FOTO: ', nombreFoto)
-                // sails.log('codigo FOTO: ', auxCodigoFoto)
+                // //sails.log('NOMBRE FOTO: ', nombreFoto)
+                // //sails.log('codigo FOTO: ', auxCodigoFoto)
 
             }, this);
 
@@ -2237,7 +2237,7 @@ module.exports = {
 
                                 var auxConsulta = consulta[0].img;
                                 if (auxConsulta != null) {
-                                    sails.log("IMG", auxConsulta)
+                                    //sails.log("IMG", auxConsulta)
                                     if (auxConsulta.length == 0) {
                                         personas.push(consulta[0]);
                                     }
@@ -2256,7 +2256,7 @@ module.exports = {
                 },
                 function(error) {
 
-                    sails.log("-------------------FINAL LISTA -----------------------")
+                    //sails.log("-------------------FINAL LISTA -----------------------")
 
                     // var estudiantes = []
                     // async.each(personas, function(element, cb) {
@@ -2285,7 +2285,7 @@ module.exports = {
                     // });
 
 
-                    sails.log("LENGTH:", personas.length)
+                    //sails.log("LENGTH:", personas.length)
                     res.send(personas)
                         // return res.send("tutores")
                 });
@@ -2319,10 +2319,10 @@ module.exports = {
 
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                    sails.log(file)
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log(file)
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     var nuevasPersonas = [];
                     var dato = fs.readFileSync(file.fd, {
                         encoding: 'utf8'
@@ -2348,8 +2348,8 @@ module.exports = {
                                 }, function(error) {
 
                                     if (error) return res.negotiate(error);
-                                    sails.log("tamaño", inscripciones.length)
-                                    sails.log("es curso ", inscripciones[0].idCurso)
+                                    //sails.log("tamaño", inscripciones.length)
+                                    //sails.log("es curso ", inscripciones[0].idCurso)
                                     auxPersona = alumnosCurso.find(function(element) {
                                         return element.nro == persona.nro
                                     })
@@ -2367,14 +2367,14 @@ module.exports = {
                         },
                         function(error) {
 
-                            sails.log("-------------------FINAL LISTA -----------------------")
+                            //sails.log("-------------------FINAL LISTA -----------------------")
                             callback(null);
                             // return res.send("tutores")
                         });
 
                 },
                 function(error) {
-                    sails.log("-------------------FINAL TODO -----------------------")
+                    //sails.log("-------------------FINAL TODO -----------------------")
 
                     res.send("fin")
                 });
@@ -2408,10 +2408,10 @@ module.exports = {
 
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                    sails.log(file)
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log(file)
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     var nuevasPersonas = [];
                     var dato = fs.readFileSync(file.fd, {
                         encoding: 'utf8'
@@ -2437,7 +2437,7 @@ module.exports = {
                                         Persona.update(data3.id).set({
                                             identificacion: data3.id + auxIdentificacion
                                         }).fetch().exec(function(err, personaUpdate) {
-                                            sails.log("ACTUALIZADO", personaUpdate)
+                                            //sails.log("ACTUALIZADO", personaUpdate)
                                             var codigoQr = personaUpdate[0].identificacion + '$2018$' + 'Colegio Domingo Savio '
                                             var code = qr.image(codigoQr, {
                                                 type: 'png'
@@ -2462,7 +2462,7 @@ module.exports = {
                                         Persona.update(data3.id).set({
                                             identificacion: data3.id + auxIdentificacion
                                         }).fetch().exec(function(err, personaUpdate) {
-                                            sails.log("ACTUALIZADO", personaUpdate)
+                                            //sails.log("ACTUALIZADO", personaUpdate)
                                             var codigoQr = personaUpdate[0].identificacion + '$2018$' + 'Colegio Domingo Savio '
                                             var code = qr.image(codigoQr, {
                                                 type: 'png'
@@ -2488,7 +2488,7 @@ module.exports = {
                         function(error) {
 
 
-                            sails.log("-------------------FINAL LISTA -----------------------")
+                            //sails.log("-------------------FINAL LISTA -----------------------")
                             callback(null);
                             // return res.send("tutores")
                         });
@@ -2497,7 +2497,7 @@ module.exports = {
                 function(error) {
                     // res.send("fin")
 
-                    sails.log("-------------------FINAL DE TODO -----------------------")
+                    //sails.log("-------------------FINAL DE TODO -----------------------")
                 });
 
             res.send("OTRA ALTERNATIVA")
@@ -2532,17 +2532,17 @@ module.exports = {
             // async.eachSeries(uploadedFiles, function (file, cb) {
 
             uploadedFiles.forEach(function(file, i) {
-                sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                sails.log(file)
-                sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                //sails.log(file)
+                //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
 
                 var nombreFoto = parseInt(file.filename.substring(4, 8)) + "";
-                sails.log("NOMBRE FOTO", nombreFoto)
+                //sails.log("NOMBRE FOTO", nombreFoto)
 
                 var urlFoto = (file.fd).split(path.sep);
-                sails.log("fotos:", urlFoto);
+                //sails.log("fotos:", urlFoto);
                 var url = "avatars//" + urlFoto[urlFoto.length - 1]
 
                 Persona.update({
@@ -2561,7 +2561,7 @@ module.exports = {
             // function (error) {
             //   // res.send("fin")
 
-            //   sails.log("-------------------FINAL DE TODO -----------------------")
+            //   //sails.log("-------------------FINAL DE TODO -----------------------")
             // });
 
             res.send("OTRA ALTERNATIVA")
@@ -2595,10 +2595,10 @@ module.exports = {
 
             async.eachSeries(uploadedFiles, function(file, callback) {
 
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-                    sails.log(file)
-                    sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                    //sails.log(file)
+                    //sails.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     var nuevasPersonas = [];
                     var dato = fs.readFileSync(file.fd, {
                         encoding: 'utf8'
@@ -2637,22 +2637,22 @@ module.exports = {
                                 }, function(error) {
 
                                     if (error) return res.negotiate(error);
-                                    // sails.log("tamaño", inscripciones.length)
-                                    // sails.log("Persona", alumnosCurso)
+                                    // //sails.log("tamaño", inscripciones.length)
+                                    // //sails.log("Persona", alumnosCurso)
                                     auxPersona = alumnosCurso.find(function(element) {
-                                        return element.nro == persona.nro
-                                    })
-                                    sails.log("AUX PERSONA : ", auxPersona)
+                                            return element.nro == persona.nro
+                                        })
+                                        //sails.log("AUX PERSONA : ", auxPersona)
 
                                     if (auxPersona != undefined) {
 
                                         var auxConsulta = auxPersona.img;
                                         if (auxConsulta == null) {
-                                            sails.log("persona.foto", persona.foto)
+                                            //sails.log("persona.foto", persona.foto)
 
                                             // var auxImg = fs.createReadStream('C:/Users/oso/Desktop/turno mañana/'+persona.idCurso+'/' + persona.foto)
                                             // var imgStats = fs.statSync('C:/Users/oso/Desktop/turno mañana/'+persona.idCurso+'/' + persona.foto)
-                                            // sails.log("IMG",auxImg)
+                                            // //sails.log("IMG",auxImg)
                                             unirest.post("http://localhost:1337/persona/avatar/" + auxPersona.id)
                                                 .headers({
                                                     'Content-Type': 'multipart/form-data'
@@ -2697,7 +2697,7 @@ module.exports = {
                         function(error) {
 
 
-                            sails.log("-------------------FINAL LISTA -----------------------")
+                            //sails.log("-------------------FINAL LISTA -----------------------")
                             callback(null);
                             // return res.send("tutores")
                         });
@@ -2706,7 +2706,7 @@ module.exports = {
                 function(error) {
                     // res.send("fin")
 
-                    sails.log("-------------------FINAL DE TODO -----------------------")
+                    //sails.log("-------------------FINAL DE TODO -----------------------")
                 });
 
             res.send("OTRA ALTERNATIVA")
@@ -2721,7 +2721,7 @@ module.exports = {
             Inscribe.update(index).set({
                 createdAt: 1539479010800
             }).fetch().exec(function(err, datoPerons) {
-                sails.log("INDEX ", index)
+                //sails.log("INDEX ", index)
             });
         }
         res.send("Todo actualizado")
@@ -2739,8 +2739,8 @@ module.exports = {
             }, function(error) {
 
                 if (error) return res.negotiate(error);
-                sails.log("tamaño", inscripciones.length)
-                sails.log("es curso ", inscripciones[0].idCurso)
+                //sails.log("tamaño", inscripciones.length)
+                //sails.log("es curso ", inscripciones[0].idCurso)
                 return res.send(alumnosCurso)
             });
 

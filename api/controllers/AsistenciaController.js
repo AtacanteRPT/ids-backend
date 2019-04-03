@@ -63,8 +63,8 @@ module.exports = {
         var fecha = hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate()
         var fecha2 = moment().format("YYYY-MM-DD");
 
-        sails.log("**********FECHA**************", fecha);
-        sails.log("**********FECHA 2+++++++++++++++", fecha2);
+        //sails.log("**********FECHA**************", fecha);
+        //sails.log("**********FECHA 2+++++++++++++++", fecha2);
 
         // horaActual = moment().format('LTS')
         horaActual = moment_time.tz('America/La_Paz').format('LTS')
@@ -119,7 +119,7 @@ module.exports = {
 
                 sails.sendNativeQuery(query, [actualIdentificacion], function(err, result) {
                     var consulta = result.rows;
-                    sails.log('RESULTADO QUERY', result.rows)
+                    //sails.log('RESULTADO QUERY', result.rows)
                     if (err) {
                         return res.serverError(err);
                     }
@@ -136,9 +136,9 @@ module.exports = {
                         resultado.turno = 'No inscrito'
                         resultado.paralelo = 'No inscrito'
                         resultado.grupo = ''
-                        sails.log('++++++++ ERROE EN CONSULTA +++++ devolviendo persona', resultado);
+                            //sails.log('++++++++ ERROE EN CONSULTA +++++ devolviendo persona', resultado);
                     }
-                    sails.log("RESULTADO", resultado)
+                    //sails.log("RESULTADO", resultado)
 
                     Asistencia.findOne({
                         idPersona: resultado.idPersona,
@@ -181,7 +181,7 @@ module.exports = {
                                     mensaje: " Hora Llegada : " + datoAsistencia.hora_salida
                                 }).on('complete', function(data3, response3) {
                                     // handle response
-                                    sails.log("se enviò una notificaciòn")
+                                    //sails.log("se enviò una notificaciòn")
                                 });
                                 //console.log("nuevo", auxAlumno)
                                 return res.send(auxAlumno);
@@ -189,8 +189,8 @@ module.exports = {
                             });
                         } else {
                             //console.log('paso 4 actualizando salida')
-                            sails.log("fecha :", fecha)
-                            sails.log("resultado idPersona", resultado.idPersona)
+                            //sails.log("fecha :", fecha)
+                            //sails.log("resultado idPersona", resultado.idPersona)
                             Asistencia.update(datoAsistencia.id).set({
                                     hora_salida: horaActual
                                 })
@@ -221,7 +221,7 @@ module.exports = {
                                         mensaje: " Hora Salida : " + datoAsistencia.hora_salida
                                     }).on('complete', function(data3, response3) {
                                         // handle response
-                                        sails.log("se enviò una notificaciòn")
+                                        //sails.log("se enviò una notificaciòn")
                                     });
 
                                     res.send(auxAlumno);
@@ -233,7 +233,7 @@ module.exports = {
                     })
                 });
             } else if (datoPersona.rol == "tutor") {
-                sails.log("DATO PERSONA _ tutor", datoPersona)
+                //sails.log("DATO PERSONA _ tutor", datoPersona)
                 Tutor.findOne({
                     idPersona: datoPersona.id
                 }).exec((err, auxTutor) => {
@@ -243,7 +243,7 @@ module.exports = {
                         if (err) {
                             return res.serverError(err);
                         }
-                        sails.log("+++++++++++++++++auxALumno+++++++++++++++++", auxAlumnos[0])
+                        //sails.log("+++++++++++++++++auxALumno+++++++++++++++++", auxAlumnos[0])
 
                         var listaAlumnos = [];
                         if (auxAlumnos.length > 0) {
@@ -314,7 +314,7 @@ module.exports = {
                             //   mensaje: " Hora Llegada : " + datoAsistencia.hora_salida
                             // }).on('complete', function (data3, response3) {
                             //   // handle response
-                            //   sails.log("se enviò una notificaciòn")
+                            //   //sails.log("se enviò una notificaciòn")
                             // });
                             //console.log("nuevo", auxAlumno)
                             return res.send(auxAlumno);
@@ -322,8 +322,8 @@ module.exports = {
                         });
                     } else {
                         //console.log('paso 4 actualizando salida')
-                        sails.log("fecha :", fecha)
-                            // sails.log("resultado idPersona", resultado.idPersona)
+                        //sails.log("fecha :", fecha)
+                        // //sails.log("resultado idPersona", resultado.idPersona)
                         Asistencia.update(datoAsistencia.id).set({
                                 hora_salida: horaActual
                             })
@@ -354,7 +354,7 @@ module.exports = {
                                 //   mensaje: " Hora Salida : " + datoAsistencia.hora_salida
                                 // }).on('complete', function (data3, response3) {
                                 //   // handle response
-                                //   sails.log("se enviò una notificaciòn")
+                                //   //sails.log("se enviò una notificaciòn")
                                 // });
 
                                 res.send(auxAlumno);
@@ -389,10 +389,10 @@ module.exports = {
 
     historial: function(req, res) {
 
-        // sails.log(HOLA)
+        // //sails.log(HOLA)
 
 
-        sails.log("user -asistenciaController", req.user)
+        //sails.log("user -asistenciaController", req.user)
 
         var id = req.user.id;
 
@@ -416,7 +416,7 @@ module.exports = {
             });
         } else if (req.user.rol == "tutor") {
 
-            sails.log("DATO PERSONA", datoPersona)
+            //sails.log("DATO PERSONA", datoPersona)
 
             var tutor = {
                 id: req.user.idPersona,
@@ -433,7 +433,7 @@ module.exports = {
                     idTutor: auxTutor.id
                 }).populate("idAlumno").exec((err, auxAlumnos) => {
 
-                    sails.log("+++++++++++++++++auxALumno+++++++++++++++++", auxAlumnos)
+                    //sails.log("+++++++++++++++++auxALumno+++++++++++++++++", auxAlumnos)
                     if (auxAlumno.length > 0) {
 
                         async.each(auxAlumnos, function(datoAlumno, cb) {
@@ -493,15 +493,15 @@ module.exports = {
                 idTutor: auxTutor.id
             }).populate("idAlumno").exec((err, auxAlumnos) => {
 
-                sails.log("+++++++++++++++++auxALumno+++++++++++++++++", auxAlumnos)
+                //sails.log("+++++++++++++++++auxALumno+++++++++++++++++", auxAlumnos)
 
-                // sails.log("+++++++++++++++++LENGTH+++++++++++++++++", auxAlumno.l)
+                // //sails.log("+++++++++++++++++LENGTH+++++++++++++++++", auxAlumno.l)
                 if (auxAlumnos.length > 0) {
 
                     async.each(auxAlumnos, function(datoAlumno, cb) {
 
                         Persona.findOne(datoAlumno.idAlumno.idPersona).exec(function(err, datoPersona) {
-                            sails.log("DATO PERSONA - Alumno", datoPersona)
+                            //sails.log("DATO PERSONA - Alumno", datoPersona)
                             Asistencia.find({
                                 where: {
                                     idPersona: datoPersona.id

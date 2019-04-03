@@ -68,7 +68,7 @@ module.exports = {
 
     },
     crear: function(req, res) {
-        sails.log("BODY", req.body)
+        //sails.log("BODY", req.body)
 
         var nuevaPersona = {
             //      identificacion: req.param('identificacion'),
@@ -91,14 +91,14 @@ module.exports = {
         } else {
             nuevaPersona.identificacion = req.param('cedula')
         }
-        // sails.log("NUEVA PERSONA", nuevaPersona)
+        // //sails.log("NUEVA PERSONA", nuevaPersona)
         var rol = req.param('rol');
         Persona.create(nuevaPersona).fetch().exec(function(err, datoPersona) {
             if (err) {
                 return res.serverError(err)
             };
 
-            sails.log("CONTROLLER PERSONA  PERSONA : ", datoPersona);
+            //sails.log("CONTROLLER PERSONA  PERSONA : ", datoPersona);
             // //console.log('persons : ' + datoPersona.nombre)
             switch (rol) {
                 case 'alumno':
@@ -263,7 +263,7 @@ module.exports = {
             maxBytes: 10000000
         }, function whenDone(err, uploadedFiles) {
 
-            sails.log("UPLOAD : ", uploadedFiles)
+            //sails.log("UPLOAD : ", uploadedFiles)
 
             if (err) {
                 return res.negotiate(err);
@@ -282,7 +282,7 @@ module.exports = {
 
             //console.log("SEPARATE", path.sep)
             var urlFoto = (uploadedFiles[0].fd).split(path.sep);
-            sails.log("fotos:", urlFoto);
+            //sails.log("fotos:", urlFoto);
             var url = "avatars//" + urlFoto[urlFoto.length - 1]
 
 
@@ -339,7 +339,7 @@ module.exports = {
             //             userAuthKey:'MGI1ODliM2QtYmU2NC00ZjgzLWIwM2EtOWYxNjI0NmI3MTVj',
             // app:{appAuthKey:'ZmEzNzdmNjktMzQ0Ny00Y2IxLTk2YTMtNWU3MGYwNWFjNzUz' , appId:'e338a31b-4667-471e-9a1a-4aa0c3cf6d5f'}
 
-            sails.log("DISPOSITIVOS", datosDispositivos)
+            //sails.log("DISPOSITIVOS", datosDispositivos)
 
             if (datosDispositivos.length > 0) {
 
@@ -347,7 +347,7 @@ module.exports = {
                 datosDispositivos.forEach(element => {
                     listaDispositivos.push(element.idDispositivo)
                 });
-                sails.log("dispositivos", listaDispositivos)
+                //sails.log("dispositivos", listaDispositivos)
                 var firstNotification = new OneSignal.Notification({
                     contents: {
                         en: "Marcò " + datosDispositivos[0].idPersona.nombre + datosDispositivos[0].idPersona.paterno + datosDispositivos[0].idPersona.materno,
@@ -435,7 +435,7 @@ module.exports = {
                         //             userAuthKey:'MGI1ODliM2QtYmU2NC00ZjgzLWIwM2EtOWYxNjI0NmI3MTVj',
                         // app:{appAuthKey:'ZmEzNzdmNjktMzQ0Ny00Y2IxLTk2YTMtNWU3MGYwNWFjNzUz' , appId:'e338a31b-4667-471e-9a1a-4aa0c3cf6d5f'}
 
-                        sails.log("DISPOSITIVOS", datosDispositivos)
+                        //sails.log("DISPOSITIVOS", datosDispositivos)
 
                         if (datosDispositivos.length > 0) {
 
@@ -443,7 +443,7 @@ module.exports = {
                             datosDispositivos.forEach(element => {
                                 listaDispositivos.push(element.idDispositivo)
                             });
-                            sails.log("dispositivos", listaDispositivos)
+                            //sails.log("dispositivos", listaDispositivos)
                             var firstNotification = new OneSignal.Notification({
                                 contents: {
                                     en: datosDispositivos[0].idPersona.nombre + datosDispositivos[0].idPersona.paterno + datosDispositivos[0].idPersona.materno,
@@ -501,11 +501,11 @@ module.exports = {
     buscar: function(req, res) {
 
         var auxNombre = req.param("nombre").split(" ")
-        sails.log("numero", parseInt(auxNombre[0], 10) + 10)
+            //sails.log("numero", parseInt(auxNombre[0], 10) + 10)
 
         // if (isNaN(parseInt(auxNombre[0], 10))) {
 
-        sails.log("NAN en auxNombre")
+        //sails.log("NAN en auxNombre")
         if (auxNombre.length == 2) {
             Persona.find({
                 and: [{
@@ -522,7 +522,7 @@ module.exports = {
                 ]
             }).exec(function(err, datoPersona) {
 
-                sails.log("Usuario buscado : ", datoPersona)
+                //sails.log("Usuario buscado : ", datoPersona)
                 res.send(datoPersona)
 
             })
@@ -552,7 +552,7 @@ module.exports = {
                 ]
             }).exec(function(err, datoPersona) {
 
-                sails.log("Usuario buscado : ", datoPersona)
+                //sails.log("Usuario buscado : ", datoPersona)
                 res.send(datoPersona)
 
             })
@@ -582,7 +582,7 @@ module.exports = {
                 ]
             }).populate("usuario").exec(function(err, datoPersona) {
 
-                sails.log("Usuario buscado : ", datoPersona)
+                //sails.log("Usuario buscado : ", datoPersona)
 
 
                 res.send(datoPersona)
@@ -593,14 +593,14 @@ module.exports = {
 
         // } else {
 
-        //     sails.log('BUSCANDO NUMERO : ' + (parseInt(auxNombre[0], 10) + 10))
+        //     //sails.log('BUSCANDO NUMERO : ' + (parseInt(auxNombre[0], 10) + 10))
         //     Persona.find(
         //         {
         //             cedula: { startsWith: parseFloat(auxNombre[0], 10) }
 
         //         }).exec(function (err, datoPersona) {
 
-        //             sails.log("Usuario buscado : ", datoPersona)
+        //             //sails.log("Usuario buscado : ", datoPersona)
         //             res.send(datoPersona)
 
         //         })
@@ -619,11 +619,11 @@ module.exports = {
     buscar_tutor: function(req, res) {
 
         var auxNombre = req.param("nombre").split(" ")
-        sails.log("numero", parseInt(auxNombre[0], 10) + 10)
+            //sails.log("numero", parseInt(auxNombre[0], 10) + 10)
 
         // if (isNaN(parseInt(auxNombre[0], 10))) {
 
-        sails.log("NAN en auxNombre")
+        //sails.log("NAN en auxNombre")
         if (auxNombre.length == 2) {
             Persona.find({
                 and: [{
@@ -644,7 +644,7 @@ module.exports = {
                 ]
             }).exec(function(err, datoPersona) {
 
-                sails.log("Usuario buscado : ", datoPersona)
+                //sails.log("Usuario buscado : ", datoPersona)
                 res.send(datoPersona)
 
             })
@@ -677,7 +677,7 @@ module.exports = {
                 ]
             }).exec(function(err, datoPersona) {
 
-                sails.log("Usuario buscado : ", datoPersona)
+                //sails.log("Usuario buscado : ", datoPersona)
                 res.send(datoPersona)
 
             })
@@ -708,7 +708,7 @@ module.exports = {
                 ]
             }).exec(function(err, datoPersona) {
 
-                sails.log("Usuario buscado : ", datoPersona)
+                //sails.log("Usuario buscado : ", datoPersona)
                 res.send(datoPersona)
 
             })
@@ -716,14 +716,14 @@ module.exports = {
 
         // } else {
 
-        //     sails.log('BUSCANDO NUMERO : ' + (parseInt(auxNombre[0], 10) + 10))
+        //     //sails.log('BUSCANDO NUMERO : ' + (parseInt(auxNombre[0], 10) + 10))
         //     Persona.find(
         //         {
         //             cedula: { startsWith: parseFloat(auxNombre[0], 10) }
 
         //         }).exec(function (err, datoPersona) {
 
-        //             sails.log("Usuario buscado : ", datoPersona)
+        //             //sails.log("Usuario buscado : ", datoPersona)
         //             res.send(datoPersona)
 
         //         })
@@ -734,13 +734,13 @@ module.exports = {
     buscar_alumno: function(req, res) {
 
         var auxNombre = req.param("nombre").split(" ")
-        sails.log("AUX NOMBRE : ", auxNombre)
+            //sails.log("AUX NOMBRE : ", auxNombre)
             // if (isNaN(parseInt(auxNombre[0], 10))) {
         var listaaux = [];
         listaaux.f
         if (auxNombre.length == 2) {
 
-            sails.log("222222222222222222222222222222222")
+            //sails.log("222222222222222222222222222222222")
 
             Persona.find({
 
@@ -768,7 +768,7 @@ module.exports = {
                 ]
             }).exec(function(err, datoPersona) {
 
-                sails.log("Usuario buscado : ", datoPersona)
+                //sails.log("Usuario buscado : ", datoPersona)
                 res.send(datoPersona)
 
             })
@@ -804,7 +804,7 @@ module.exports = {
                 ]
             }).exec(function(err, datoPersona) {
 
-                sails.log("Usuario buscado : ", datoPersona)
+                //sails.log("Usuario buscado : ", datoPersona)
                 res.send(datoPersona)
 
             })
@@ -842,7 +842,7 @@ module.exports = {
                 });
 
 
-                // sails.log("Usuario buscado : ", datoPersona)
+                // //sails.log("Usuario buscado : ", datoPersona)
                 res.send(n)
 
             })

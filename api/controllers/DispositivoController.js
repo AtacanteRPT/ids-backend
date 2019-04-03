@@ -18,7 +18,7 @@ module.exports = {
     },
     adicionar: function(req, res) {
 
-        sails.log("######### ################", req.param("idDispositivo"))
+        //sails.log("######### ################", req.param("idDispositivo"))
         Dispositivo.create({ idDispositivo: req.param("idDispositivo"), idPersona: req.user.id }).fetch().exec(function(err, result) {
             if (err) { return res.serverError(err); }
             res.send(result)
@@ -41,7 +41,7 @@ module.exports = {
 
         var fecha = hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate()
 
-        sails.log("**********FECHA**************", fecha);
+        //sails.log("**********FECHA**************", fecha);
         horaActual = moment().format('LTS')
         if (hoy.getHours() >= maxHoraLlegada && hoy.getMinutes() >= minsSalida && sw == 0) {
             actualIdentificacion = '0';
@@ -85,9 +85,9 @@ module.exports = {
                             resultado.turno = 'No inscrito'
                             resultado.paralelo = 'No inscrito'
                             resultado.grupo = ''
-                            sails.log('++++++++ ERROE EN CONSULTA +++++ devolviendo persona', resultado);
+                                //sails.log('++++++++ ERROE EN CONSULTA +++++ devolviendo persona', resultado);
                         }
-                        sails.log("RESULTADO", consulta)
+                        //sails.log("RESULTADO", consulta)
 
                         Asistencia.findOne({ idPersona: resultado.idPersona, fecha: fecha }).exec((err, datoAsistencia) => {
                             //console.log('fechaAsistencia', datoAsistencia)
@@ -119,7 +119,7 @@ module.exports = {
 
                                     rest.postJson(DOMINIO + 'persona/notificar', { id: datoPersona.id, mensaje: " Hora Llegada : " + datoAsistencia.hora_llegada }).on('complete', function(data3, response3) {
                                         // handle response
-                                        sails.log("se enviò una notificaciòn")
+                                        //sails.log("se enviò una notificaciòn")
 
                                     });
 
@@ -175,7 +175,7 @@ module.exports = {
 
                                     rest.postJson(DOMINIO + 'persona/notificar', { id: datoPersona.id, mensaje: " Hora Salida : " + datoAsistencia.hora_salida }).on('complete', function(data3, response3) {
                                         // handle response
-                                        sails.log("se enviò una notificaciòn")
+                                        //sails.log("se enviò una notificaciòn")
                                     });
 
                                     res.send(auxAlumno);
@@ -203,7 +203,7 @@ module.exports = {
 
                                     rest.postJson(DOMINIO + 'persona/notificar', { id: datoPersona.id, mensaje: " Hora Salida : " + datoAsistencia.hora_salida }).on('complete', function(data3, response3) {
                                         // handle response
-                                        sails.log("se enviò una notificaciòn")
+                                        //sails.log("se enviò una notificaciòn")
                                     });
 
 
@@ -230,10 +230,10 @@ module.exports = {
                         })
                     });
                 } else if (datoPersona.rol == "tutor") {
-                    sails.log("DATO PERSONA", datoPersona)
+                    //sails.log("DATO PERSONA", datoPersona)
                     Tutor.findOne({ idPersona: datoPersona.id }).exec((err, auxTutor) => {
                         Tutor_alumno.findOne({ idTutor: auxTutor.id }).populate("idAlumno").exec((err, auxAlumno) => {
-                            sails.log("+++++++++++++++++auxALumno+++++++++++++++++", auxAlumno)
+                            //sails.log("+++++++++++++++++auxALumno+++++++++++++++++", auxAlumno)
                             if (auxAlumno) {
 
                                 Persona.findOne(auxAlumno.idAlumno.idPersona).exec((err, auxPersona) => {

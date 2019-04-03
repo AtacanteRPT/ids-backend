@@ -44,11 +44,11 @@ module.exports = {
 
                         //console.log(datoTutor)
                         tutores.push(datoTutor);
-                        sails.log('1:', tutores.length)
+                        //sails.log('1:', tutores.length)
                         cb();
                     });
                 }, function(error) {
-                    sails.log('2:', tutores.length)
+                    //sails.log('2:', tutores.length)
                     if (error) return res.negotiate(error);
                     return res.send(tutores)
                 });
@@ -64,7 +64,7 @@ module.exports = {
         Persona.update(id).set({
             identificacion: identificacion
         }).exec(function(err, datoPersona) {
-            sails.log('ACTUALIZADO : ', datoPersona)
+            //sails.log('ACTUALIZADO : ', datoPersona)
             res.send(datoPersona)
         })
     },
@@ -85,7 +85,7 @@ module.exports = {
                 }
 
                 if (datoTutor) {
-                    sails.log("AlumnoController", datoTutor);
+                    //sails.log("AlumnoController", datoTutor);
                     Tutor_alumno.create({
                         idAlumno: datoAlumno.id,
                         idTutor: datoTutor.id
@@ -129,7 +129,7 @@ module.exports = {
                 }
 
                 if (datoTutor) {
-                    sails.log("AlumnoController", datoTutor);
+                    //sails.log("AlumnoController", datoTutor);
                     Tutor_alumno.create({
                         id: 0,
                         idAlumno: datoAlumno.id,
@@ -169,7 +169,7 @@ module.exports = {
         Curso.findOne(curso).exec(function(err, datoCurso) {
 
             if (datoCurso != undefined) {
-                sails.log("curso encontrado", datoCurso);
+                //sails.log("curso encontrado", datoCurso);
                 Inscribe.find({
                     idCurso: datoCurso.id,
                     idGestionAcademica: gestionActual
@@ -195,16 +195,16 @@ module.exports = {
                     }, function(error) {
 
                         //  var auxListaAlumnosCurso =  _.orderBy(alumnosCurso,["paterno","materno","nombre"],["asc","asc","asc"])
-                        // sails.log("AUX LISTA ALUMNOS CURSO",auxListaAlumnosCurso)
+                        // //sails.log("AUX LISTA ALUMNOS CURSO",auxListaAlumnosCurso)
                         if (error) return res.negotiate(error);
-                        sails.log("alumnos por curso length", alumnosCurso.length)
+                        //sails.log("alumnos por curso length", alumnosCurso.length)
                         return res.send(alumnosCurso)
 
                     });
                 })
             } else {
 
-                sails.log("NO EXITE EL CURSO ", asistenciasCurso.length)
+                //sails.log("NO EXITE EL CURSO ", asistenciasCurso.length)
                 res.send(asistenciasCurso)
             }
 

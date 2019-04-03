@@ -13,7 +13,7 @@ module.exports = {
         var hoy = new Date();
         //console.log('fecha', fechaA)
         Asistencia.find().populate('idPersona').exec((err, datoAsistencias) => {
-            sails.log('datoAsistencias', datoAsistencias[0].fecha)
+            //sails.log('datoAsistencias', datoAsistencias[0].fecha)
             datoAsistencias[0].fecha = fechaA.getDate() + ' de ' + mes[fechaA.getMonth()] + ' de ' + fechaA.getFullYear()
             res.view('asistenciaDia', { asistencia: datoAsistencias });
         });
@@ -81,16 +81,16 @@ module.exports = {
         Curso.findOne(curso).exec(function(err, datoCurso) {
 
             if (datoCurso != undefined) {
-                sails.log("curso encontrado", datoCurso);
+                //sails.log("curso encontrado", datoCurso);
                 Inscribe.find({ idCurso: datoCurso.id }).populate('idAlumno').exec(function(err, inscripciones) {
 
                     var alumnosCurso = [];
 
                     async.forEach(inscripciones, function(inscripcion, cb) {
 
-                        // sails.log("inscribe ", inscripcion)
+                        // //sails.log("inscribe ", inscripcion)
                         var alumno = inscripcion.idAlumno;
-                        // sails.log("alumno ", alumno)
+                        // //sails.log("alumno ", alumno)
                         if (alumno != undefined) {
                             Asistencia.find({
                                 idPersona: alumno.idPersona,
@@ -98,7 +98,7 @@ module.exports = {
                                 fecha: { '>': req.query.ini, '<': req.query.fin }
 
                             }).populate('idPersona').populate('idGestionAcademica').exec(function(err, datosAsistencia) {
-                                sails.log("asistnecias  ", datosAsistencia)
+                                //sails.log("asistnecias  ", datosAsistencia)
                                 alumnosCurso = alumnosCurso.concat(datosAsistencia);
                                 cb();
                             });

@@ -66,7 +66,7 @@ module.exports = {
                             datoTurnos.forEach(function(turno, indexT) {
 
                                 var auxTurno = {};
-                                // sails.log('turno : ', datoTurnos[indexT])
+                                // //sails.log('turno : ', datoTurnos[indexT])
                                 var auxCursos = [];
                                 datoCursos.forEach(function(curso) {
 
@@ -75,8 +75,8 @@ module.exports = {
                                     }
 
                                 }, this);
-                                sails.log('tamaño Cursos', auxCursos.length)
-                                    // sails.log('auxCurso', auxCursos)
+                                //sails.log('tamaño Cursos', auxCursos.length)
+                                // //sails.log('auxCurso', auxCursos)
 
                                 var auxGrados = [];
                                 datoGrados.forEach(function(grado) {
@@ -92,31 +92,31 @@ module.exports = {
 
                                 auxTurno = turno;
                                 auxTurno.grados = []
-                                    // sails.log('indexT_1', indexT);
-                                    // sails.log('auxGradosLength', auxGrados.length);
-                                    // sails.log('auxGrados', auxGrados);
+                                    // //sails.log('indexT_1', indexT);
+                                    // //sails.log('auxGradosLength', auxGrados.length);
+                                    // //sails.log('auxGrados', auxGrados);
                                 auxTurno.grados = auxGrados;
                                 // todo[indexT] = auxTurno;
                                 // todo[indexT].grados = auxGrados;
-                                sails.log('auxTurno : ', auxTurno)
-                                    // todo.push(datoTurnos[indexT])
-                                    // todo.splice(indexT, 0, turno);
+                                //sails.log('auxTurno : ', auxTurno)
+                                // todo.push(datoTurnos[indexT])
+                                // todo.splice(indexT, 0, turno);
 
                                 // if (indexT == 1) {
                                 //     todo[1].grados[1].oso = "ricardo"
                                 //     res.send(todo)
                                 // }
 
-                                // sails.log('todo', todo)
+                                // //sails.log('todo', todo)
                                 // todo[indexT].grados = []
                                 auxGrados.forEach(function(grado, indexG) {
-                                    // sails.log('grados index', indexG)
+                                    // //sails.log('grados index', indexG)
                                     var auxGrupo = {};
                                     var auxGrupos = [];
                                     datoGrupos.forEach(function(grupo) {
                                         auxCursos.some(function(curso) {
                                             if (grado.id == curso.idGrado && grupo.id == curso.idGrupo) {
-                                                // sails.log('grupo', grupo)
+                                                // //sails.log('grupo', grupo)
                                                 auxGrupos.push(grupo)
                                                 return true;
                                             }
@@ -125,13 +125,13 @@ module.exports = {
                                     }, this);
 
                                     auxGrupo = grado;
-                                    // sails.log('auxGrupos', auxGrupos)
+                                    // //sails.log('auxGrupos', auxGrupos)
                                     auxGrupo.grupos = auxGrupos;
-                                    //  sails.log('grado.grupos', grado.grupos)
-                                    //  sails.log('gardo1', grado)
+                                    //  //sails.log('grado.grupos', grado.grupos)
+                                    //  //sails.log('gardo1', grado)
 
-                                    sails.log('indexT_1', indexT);
-                                    sails.log('indexG :', indexG);
+                                    //sails.log('indexT_1', indexT);
+                                    //sails.log('indexG :', indexG);
                                     // todo[indexT].grados.push(grado)
 
                                     // todo[indexT].grados.splice(indexG, 0, "Lene");
@@ -140,18 +140,18 @@ module.exports = {
                                     auxTurno.grados[indexG].grupos = auxGrupos;
                                     // //console.log('grupos++ ', todo[indexT].grados[indexG].grupos)
 
-                                    // sails.log('TODO : ',todo[indexT].grados[indexG])
+                                    // //sails.log('TODO : ',todo[indexT].grados[indexG])
                                     // todo[indexT].grados[indexG].grupos = [];
-                                    //    sails.log('todo', todo)
-                                    // sails.log('gardo2', grado)
+                                    //    //sails.log('todo', todo)
+                                    // //sails.log('gardo2', grado)
 
                                     // auxGrupos.forEach(function (grupo, indexGr) {
-                                    //     sails.log('grupo index', indexGr)
+                                    //     //sails.log('grupo index', indexGr)
                                     //     var auxParalelos = [];
                                     //     datoParalelos.forEach(function (paralelo) {
                                     //         auxCursos.some(function (curso) {
                                     //             if (grupo.id == curso.idGrupo && grado.id == curso.idGrado && paralelo.id == curso.idParalelo) {
-                                    //                 sails.log('paralelo: ', paralelo);
+                                    //                 //sails.log('paralelo: ', paralelo);
                                     //                 auxParalelos.push(paralelo)
                                     //                 return true;
                                     //             }
@@ -160,8 +160,8 @@ module.exports = {
                                     //     }, this);
 
                                     //     grupo.paralelos = auxParalelos;
-                                    //     // sails.log('paralelos', grupo.paralelos.length)
-                                    //     // sails.log('indexT_3', indexT);
+                                    //     // //sails.log('paralelos', grupo.paralelos.length)
+                                    //     // //sails.log('indexT_3', indexT);
                                     //     todo[indexT].grados[indexG].grupos[indexGr].paralelos = [];
                                     //     todo[indexT].grados[indexG].grupos[indexGr].paralelos = auxParalelos;
                                     //     auxParalelos = [];
@@ -174,7 +174,7 @@ module.exports = {
                                 auxTurno = {};
                                 turno = null;
 
-                                sails.log('****************')
+                                //sails.log('****************')
 
                             }, this);
 
@@ -194,7 +194,7 @@ module.exports = {
 
         Curso.find().exec((err, datoCursos) => {
             if (err) { return res.serverError(err); }
-            sails.log("TOTAL CURSO :: ", datoCursos.length)
+            //sails.log("TOTAL CURSO :: ", datoCursos.length)
 
             Turno.findOne(req.param('id')).exec((err, turno) => {
                 if (err) { return res.serverError(err); }
@@ -218,8 +218,8 @@ module.exports = {
                                 }
 
                             }, this);
-                            sails.log('tamaño Cursos', auxCursos.length)
-                                // sails.log('auxCurso', auxCursos)
+                            //sails.log('tamaño Cursos', auxCursos.length)
+                            // //sails.log('auxCurso', auxCursos)
 
                             var auxGrados = [];
                             datoGrados.forEach(function(grado) {
@@ -236,12 +236,12 @@ module.exports = {
                             turno.grados = []
                             turno.grados = auxGrados;
                             auxGrados.forEach(function(grado, indexG) {
-                                // sails.log('grados index', indexG)
+                                // //sails.log('grados index', indexG)
                                 var auxGrupos = [];
                                 datoGrupos.forEach(function(grupo) {
                                     auxCursos.some(function(curso) {
                                         if (grado.id == curso.idGrado && grupo.id == curso.idGrupo) {
-                                            // sails.log('grupo', grupo)
+                                            // //sails.log('grupo', grupo)
 
                                             auxGrupos.push(grupo)
                                             return true;
@@ -254,12 +254,12 @@ module.exports = {
                                 turno.grados[indexG].grupos = auxGrupos;
 
                                 // auxGrupos.forEach(function(grupo, indexGr) {
-                                //     sails.log('grupo index', indexGr)
+                                //     //sails.log('grupo index', indexGr)
                                 //     var auxParalelos = [];
                                 //     datoParalelos.forEach(function(paralelo) {
                                 //         auxCursos.some(function(curso) {
                                 //             if (grupo.id == curso.idGrupo && grado.id == curso.idGrado && paralelo.id == curso.idParalelo) {
-                                //                 sails.log('paralelo: ', paralelo);
+                                //                 //sails.log('paralelo: ', paralelo);
                                 //                 paralelo.idCurso = curso.id;
                                 //                 auxParalelos.push(paralelo)
                                 //                 return true;
@@ -269,8 +269,8 @@ module.exports = {
                                 //     }, this);
 
                                 //     grupo.paralelos = auxParalelos;
-                                //     // sails.log('paralelos', grupo.paralelos.length)
-                                //     // sails.log('indexT_3', indexT);
+                                //     // //sails.log('paralelos', grupo.paralelos.length)
+                                //     // //sails.log('indexT_3', indexT);
 
                                 //     var auxParalelo = auxParalelos;
 
@@ -281,7 +281,7 @@ module.exports = {
 
                             }, this);
 
-                            sails.log('****************')
+                            //sails.log('****************')
 
                             //console.log('llego aqui')
                             res.send(turno)
@@ -369,7 +369,7 @@ module.exports = {
         var idTurno = req.param("id")
 
         rest.get(DOMINIO_A2HOSTING + 'curso/mostrar_turno2/' + idTurno).on('complete', function(result) {
-                sails.log(result.grados[2])
+                //sails.log(result.grados[2])
                 auxLista = result;
                 var auxGrados = []
                 async.each(result.grados, function(grado, cb) {
@@ -387,15 +387,15 @@ module.exports = {
                         Curso.find(consultaCurso).populate("idParalelo").populate("idGrupo").exec((err, datoCursos) => {
                             if (err) { return res.serverError(err); }
 
-                            sails.log("Nombre :", datoCursos)
+                            //sails.log("Nombre :", datoCursos)
                             if (datoCursos.length > 0) {
-                                sails.log("Distinto de nulo :", datoCursos.length)
+                                //sails.log("Distinto de nulo :", datoCursos.length)
                                 var paralelos = []
 
                                 async.each(datoCursos, function(curso, cb3) {
                                     var auxCurso = curso.idParalelo
                                     auxCurso.idCurso = curso.id
-                                    sails.log("***CURSO**** :", auxCurso)
+                                        //sails.log("***CURSO**** :", auxCurso)
                                     paralelos.push(auxCurso)
                                     cb3();
 
@@ -463,7 +463,7 @@ module.exports = {
 
             }, function(error) {
 
-                sails.log("-------------------FINAL LISTA -----------------------")
+                //sails.log("-------------------FINAL LISTA -----------------------")
                 return res.send("Todo CAMBIO EL CURSO")
             });
 

@@ -43,7 +43,7 @@ module.exports = {
                         })
                     });
                 });
-                // sails.log("Passport.js - userDetails", userDetails)
+                // //sails.log("Passport.js - userDetails", userDetails)
             });
         });
 
@@ -94,7 +94,7 @@ module.exports = {
 
                 // rest.postJson(DOMINIO + 'persona/notificar', { id: datoPersona.id, mensaje: " Hora Salida : " + datoAsistencia.hora_salida }).on('complete', function (data3, response3) {
                 //     // handle response
-                //     sails.log("se enviò una notificaciòn")
+                //     //sails.log("se enviò una notificaciòn")
                 // });
 
                 res.send(auxAlumno);

@@ -34,7 +34,7 @@ module.exports = {
         var idCurso = req.param('idCurso')
         var idGestionAcademica = req.param('idGestionAcademica')
 
-        sails.log("entrando a la consulta")
+        //sails.log("entrando a la consulta")
         Alumno.findOne({ idPersona: id }).exec((err, datoPersona) => {
             if (err) { return res.serverError(err); }
 
@@ -42,7 +42,7 @@ module.exports = {
 
                 if (err) { return res.serverError(err); }
 
-                sails.log("devolviendo lo ultimo")
+                //sails.log("devolviendo lo ultimo")
                 res.send(datoInscribe[0])
             })
 
